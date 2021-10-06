@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../models/meal.dart';
 import '../screens/meal_detail_screen.dart';
+import '../models/meal.dart';
 
 class MealItem extends StatelessWidget {
   final String id;
@@ -10,18 +10,28 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
-  final Function removeItem;
+
+  MealItem(
+      {@required this.id,
+      @required this.title,
+      @required this.imageUrl,
+      @required this.affordability,
+      @required this.complexity,
+      @required this.duration,});
 
   String get complexityText {
     switch (complexity) {
       case Complexity.Simple:
         return 'Simple';
+        break;
       case Complexity.Challenging:
         return 'Challenging';
+        break;
       case Complexity.Hard:
         return 'Hard';
+        break;
       default:
-        return 'Undefined';
+        return 'Unknown';
     }
   }
 
@@ -29,31 +39,28 @@ class MealItem extends StatelessWidget {
     switch (affordability) {
       case Affordability.Affordable:
         return 'Affordable';
+        break;
       case Affordability.Pricey:
         return 'Pricey';
+        break;
       case Affordability.Luxurious:
         return 'Expensive';
+        break;
       default:
-        return 'Undefined';
+        return 'Unknown';
     }
   }
 
-  MealItem({
-    required this.id,
-    required this.title,
-    required this.imageUrl,
-    required this.duration,
-    required this.complexity,
-    required this.affordability,
-    required this.removeItem,
-  });
-
-  void selectMeal(BuildContext ctx) {
-    Navigator.of(ctx)
-        .pushNamed(MealDetailScreen.routeName, arguments: id)
+  void selectMeal(BuildContext context) {
+    Navigator.of(context)
+        .pushNamed(
+      MealDetailScreen.routeName,
+      arguments: id,
+    )
         .then((result) {
-      if(result != null)
-        removeItem(result);
+      if (result != null) {
+        // removeItem(result);
+      }
     });
   }
 
@@ -87,8 +94,8 @@ class MealItem extends StatelessWidget {
                   bottom: 20,
                   right: 10,
                   child: Container(
-                    color: Colors.black54,
                     width: 300,
+                    color: Colors.black54,
                     padding: EdgeInsets.symmetric(
                       vertical: 5,
                       horizontal: 20,
@@ -103,7 +110,7 @@ class MealItem extends StatelessWidget {
                       overflow: TextOverflow.fade,
                     ),
                   ),
-                ),
+                )
               ],
             ),
             Padding(
@@ -113,7 +120,9 @@ class MealItem extends StatelessWidget {
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Icon(Icons.schedule),
+                      Icon(
+                        Icons.schedule,
+                      ),
                       SizedBox(
                         width: 6,
                       ),
@@ -122,7 +131,9 @@ class MealItem extends StatelessWidget {
                   ),
                   Row(
                     children: <Widget>[
-                      Icon(Icons.work),
+                      Icon(
+                        Icons.work,
+                      ),
                       SizedBox(
                         width: 6,
                       ),
@@ -131,7 +142,9 @@ class MealItem extends StatelessWidget {
                   ),
                   Row(
                     children: <Widget>[
-                      Icon(Icons.attach_money),
+                      Icon(
+                        Icons.attach_money,
+                      ),
                       SizedBox(
                         width: 6,
                       ),

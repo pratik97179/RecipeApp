@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screens/category_meal_screen.dart';
+import '../screens/category_meals_screen.dart';
 
 class CategoryItem extends StatelessWidget {
   final String id;
@@ -13,10 +13,10 @@ class CategoryItem extends StatelessWidget {
     Navigator.of(ctx).pushNamed(
       CategoryMealsScreen.routeName,
       arguments: {
-        'id': id, 
+        'id': id,
         'title': title,
       },
-    ); 
+    );
   }
 
   @override
@@ -29,7 +29,7 @@ class CategoryItem extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         child: Text(
           title,
-          style: Theme.of(context).textTheme.title,
+          style: Theme.of(context).textTheme.subtitle1,
         ),
         decoration: BoxDecoration(
           gradient: LinearGradient(
